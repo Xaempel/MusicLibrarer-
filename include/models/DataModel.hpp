@@ -27,19 +27,49 @@
 ******************************************************************************/
 #pragma once
 
-#include <QMainWindow>
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
+namespace DataUtils {
+
+   /// @brief The DataModel have basic data operation save, load, remove.
+   class DataModel {
+      public:
+      /// @brief The save method save data in file
+      template <typename... DataPack>
+      bool save(QString fileName, QString dataSectionName, DataPack... dp)
+      {
+         QFile file(fileName);
+         if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) {
+            throw std::runtime_error("file " + fileName.toStdString() + " is not open");
+         }
+
+         initJsonObjects(file, dataSectionName);
+
+         (datatoSave.append(dp), ...);
+
+         object[dataSectionName] = datatoSave;
+         document.setObject(object);
+
+         saveFile(file);
+         return true;
+      }
+
+      /// @brief The load method load data from file
+      [[nodiscard]] QVariantList load(const QString fileName, const QString dataSectionName);
+
+      /// @brief The remove method remove data from file based on IndexofDataDelete var
+      void remove(const QString fileName, const QString dataSectionName, int IndexofDataDelete);
+
+      private:
+      void initJsonObjects(QFile& file, const QString dataSectionName);
+      void saveFile(QFile& file);
+
+      QJsonDocument document {};
+      QJsonObject object {};
+      QJsonArray datatoSave {};
+   };
+
 }
-QT_END_NAMESPACE
-
-/// @brief The MainWindow Class is Main Window for project 
-class MainWindow : public QMainWindow {
-public:
-  explicit MainWindow(QWidget *parent = nullptr);
-
-private:
-  Ui::MainWindow *ui{nullptr};
-};

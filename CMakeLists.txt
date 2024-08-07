@@ -11,8 +11,9 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(cmake/qt_setup.cmake)
+include(cmake/path.cmake)
 include(test/CMakeLists.txt)
 
-add_executable(${PROJECT_NAME} src/main.cpp src/MainWindow.cpp include/MainWindow.hpp)
+add_executable(${PROJECT_NAME} src/main.cpp  ${HEADER_PATH} ${SOURCE_PATH})
 
 setup_target(${PROJECT_NAME})

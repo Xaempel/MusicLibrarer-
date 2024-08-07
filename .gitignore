@@ -1,3 +1,9 @@
+# doxygen auto generate docs folder
+docs_class
+
+# .vscode trash folder file
+.vscode
+
 # compiler trash
 build
 
