@@ -25,16 +25,16 @@
 **  https://www.qt.io/.                                                       **
 **                                                                            **
 ******************************************************************************/
+#pragma once
 
-#include "include/DepedencyManager.hpp"
+#include "MainWindow.hpp"
 
-#include <QApplication>
+/// @brief The DepedencyManager is class for have app features close into a boxes for better manager app feature 
+class DepedencyManager {
+   public:
+   /// @brief The startApp method open a app MainWindow 
+   void startApp();
 
-int main(int argc, char** argv)
-{
-   QApplication app(argc, argv);
-   DepedencyManager depedencyManager {};
-   depedencyManager.startApp();
-
-   return app.exec();
-}
+   private:
+   MainWindow mainWindow;
+};
