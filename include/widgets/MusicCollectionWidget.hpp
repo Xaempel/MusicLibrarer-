@@ -27,21 +27,25 @@
 ******************************************************************************/
 #pragma once
 
-#include "widgets/MainWindow.hpp"
+#include <QFrame>
 
-/// @brief The DepedencyManager is class for have app features close into a boxes for better manager app feature
-class DepedencyManager : public QObject {
+QT_BEGIN_NAMESPACE
+namespace Ui {
+   class MusicCollectionWidget;
+}
+QT_END_NAMESPACE
+
+class MusicCollectionWidget : public QFrame {
    Q_OBJECT
-
    public:
-   DepedencyManager();
+   MusicCollectionWidget(QWidget* parent = nullptr, const QString collectioName = "");
 
-   /// @brief The startApp method open a app MainWindow
-   void startApp();
+   signals:
+   void collectionwasClicked();
 
-   private slots:
-   void addMusicCollection();
+   protected:
+   void mousePressEvent(QMouseEvent* event) override;
 
    private:
-   MainWindow mainWindow;
+   Ui::MusicCollectionWidget* ui {nullptr};
 };

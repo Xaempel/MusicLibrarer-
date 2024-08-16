@@ -1,11 +1,15 @@
 set(HEADER_PATH
-    include/MainWindow.hpp
-    include/models/DataModel.hpp
-    include/DepedencyManager.hpp
+    ../include/widgets/MainWindow.hpp
+    ../include/models/DataModel.hpp
+    ../include/DepedencyManager.hpp
+    ../include/widgets/MusicCollectionWizard.hpp
+    ../include/widgets/MusicCollectionWidget.hpp
 )
 
 set(SOURCE_PATH
-    src/MainWindow.cpp
-    src/models/DataModel.cpp
-    src/DepedencyManager.cpp
+    ../src/widgets/MainWindow.cpp
+    ../src/models/DataModel.cpp
+    ../src/DepedencyManager.cpp
+    ../src/widgets/MusicCollectionWizard.cpp
+    ../src/widgets/MusicCollectionWidget.cpp
 )

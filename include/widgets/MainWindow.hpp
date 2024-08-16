@@ -31,15 +31,22 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class MainWindow;
+   class MainWindow;
 }
 QT_END_NAMESPACE
 
-/// @brief The MainWindow Class is Main Window for project 
+/// @brief The MainWindow Class is Main Window for project
 class MainWindow : public QMainWindow {
-public:
-  explicit MainWindow(QWidget *parent = nullptr);
+   Q_OBJECT
 
-private:
-  Ui::MainWindow *ui{nullptr};
+   public:
+   explicit MainWindow(QWidget* parent = nullptr);
+
+   void addCollectionWidget(QWidget* collection);
+
+   signals:
+   void addNewCollection();
+
+   private:
+   Ui::MainWindow* ui {nullptr};
 };

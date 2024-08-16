@@ -27,21 +27,31 @@
 ******************************************************************************/
 #pragma once
 
-#include "widgets/MainWindow.hpp"
+#include <QWizard>
 
-/// @brief The DepedencyManager is class for have app features close into a boxes for better manager app feature
-class DepedencyManager : public QObject {
-   Q_OBJECT
+QT_BEGIN_NAMESPACE
+namespace Ui {
+   class MusicCollectionWizard;
+}
+QT_END_NAMESPACE
 
+enum class CollectionType {
+   PlainTextType = 0,
+   MultiMediaType
+};
+
+struct DataWizard {
+   QString collectioName {};
+   QString collectionGenre {};
+   CollectionType typeofCollection {};
+};
+
+class MusicCollectionWizard : public QWizard {
    public:
-   DepedencyManager();
+   MusicCollectionWizard(QWidget* parent = nullptr);
 
-   /// @brief The startApp method open a app MainWindow
-   void startApp();
-
-   private slots:
-   void addMusicCollection();
+   [[nodiscard]] DataWizard getDatafromWizard();
 
    private:
-   MainWindow mainWindow;
+   Ui::MusicCollectionWizard* ui {nullptr};
 };
