@@ -1,5 +1,6 @@
 #include "../include/DepedencyManager.hpp"
 
+#include "../include/widgets/MusicCollectionInfo.hpp"
 #include "../include/widgets/MusicCollectionWidget.hpp"
 #include "../include/widgets/MusicCollectionWizard.hpp"
 
@@ -28,6 +29,8 @@ void DepedencyManager::addMusicCollection()
       }
       else {
          MusicCollectionWidget* musicCollectionWidget {new MusicCollectionWidget(nullptr, datafromWizard.collectioName)};
+         MusicCollectionInfo* musicCollectionInfo {new MusicCollectionInfo(nullptr)};
+         QObject::connect(musicCollectionWidget, &MusicCollectionWidget::collectionwasClicked, [this, musicCollectionInfo]() { musicCollectionInfo->show(); });
          mainWindow.addCollectionWidget(musicCollectionWidget);
       }
    }

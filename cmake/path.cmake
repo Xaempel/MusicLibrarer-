@@ -4,6 +4,7 @@ set(HEADER_PATH
     ../include/DepedencyManager.hpp
     ../include/widgets/MusicCollectionWizard.hpp
     ../include/widgets/MusicCollectionWidget.hpp
+    ../include/widgets/MusicCollectionInfo.hpp
 )
 
 set(SOURCE_PATH
@@ -12,4 +13,5 @@ set(SOURCE_PATH
     ../src/DepedencyManager.cpp
     ../src/widgets/MusicCollectionWizard.cpp
     ../src/widgets/MusicCollectionWidget.cpp
+    ../src/widgets/MusicCollectionInfo.cpp
 )
